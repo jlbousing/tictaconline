@@ -7,7 +7,8 @@ import { environment } from '../environments/environment';
  */
 @Component({
   selector: 'app-root',
-  template: `<phaser-component [gameConfig]="gameConfig" (gameReady)="onGameReady($event)"></phaser-component>`
+  //template: `<phaser-component [gameConfig]="gameConfig" (gameReady)="onGameReady($event)"></phaser-component>`
+  templateUrl:'./app.component.html'
 })
 export class AppComponent {
   /**
@@ -22,10 +23,29 @@ export class AppComponent {
     title: environment.title,
     version: environment.version,
     type: Phaser.AUTO,
-    width: 640,
-    height: 480,
+    width: window.innerWidth,
+    height: window.innerHeight,
     scene: {
-      create: function () { this.cameras.main.startFollow(this.add.text(0, 0, 'Hello World!').setOrigin(0.5), false); }
+      preload: function () {
+        //this.load.setBaseURL('http://labs.phaser.io');
+        this.load.image('background', 'assets/bluebackground.png');
+        this.load.image("amarillo", "assets/amarillo.png");
+        //this.load.image('logo', 'assets/sprites/phaser3-logo.png');
+        //this.load.image('red', 'assets/particles/red.png');
+      },
+      create: function () {
+        var backgroundSprite = this.add.image(680, 300, 'background');
+        var amarillo = this.add.image(228,105,"amarillo");
+        var amarillo2 = this.add.image(230,105,"amarillo");
+        console.log(backgroundSprite);
+        backgroundSprite.displayWidth = window.innerWidth;
+        backgroundSprite.displayHeight = window.innerHeight;
+
+        amarillo.displayWidth = Math.round(window.innerWidth / 3);
+        amarillo.displayHeight = Math.round(window.innerHeight / 3);
+        amarillo2.displayWidth = Math.round(window.innerWidth / 3);
+        amarillo2.displayHeight = Math.round(window.innerHeight / 3);
+      }
     }
   };
 
@@ -40,6 +60,8 @@ export class AppComponent {
    * @param game Game instance.
    */
   public onGameReady(game: Phaser.Game): void {
+    console.log(game);
     this.game = game;
   }
+
 }
