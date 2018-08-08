@@ -36,15 +36,53 @@ export class AppComponent {
       create: function () {
         var backgroundSprite = this.add.image(680, 300, 'background');
         var amarillo = this.add.image(228,105,"amarillo");
-        var amarillo2 = this.add.image(230,105,"amarillo");
+        var amarillo2 = this.add.image(690,105,"amarillo");
+        var amarillo3 = this.add.image(1150,105,"amarillo");
+        var amarillo4 = this.add.image(228,320,"amarillo");
+        var amarillo5 = this.add.image(690,320,"amarillo");
+        var amarillo6 = this.add.image(1150,320,"amarillo");
+        var amarillo7 = this.add.image(228,535,"amarillo");
+        var amarillo8 = this.add.image(690,535,"amarillo");
+        var amarillo9 = this.add.image(1150,535,"amarillo");
+
+        console.log(amarillo2);
         console.log(backgroundSprite);
         backgroundSprite.displayWidth = window.innerWidth;
         backgroundSprite.displayHeight = window.innerHeight;
 
         amarillo.displayWidth = Math.round(window.innerWidth / 3);
         amarillo.displayHeight = Math.round(window.innerHeight / 3);
+        amarillo.setInteractive();
         amarillo2.displayWidth = Math.round(window.innerWidth / 3);
         amarillo2.displayHeight = Math.round(window.innerHeight / 3);
+        amarillo2.setInteractive();
+        amarillo3.displayWidth = Math.round(window.innerWidth / 3);
+        amarillo3.displayHeight = Math.round(window.innerHeight / 3);
+        amarillo3.setInteractive();
+        amarillo4.displayWidth = Math.round(window.innerWidth / 3);
+        amarillo4.displayHeight = Math.round(window.innerHeight / 3);
+        amarillo4.setInteractive();
+        amarillo5.displayWidth = Math.round(window.innerWidth / 3);
+        amarillo5.displayHeight = Math.round(window.innerHeight / 3);
+        amarillo5.setInteractive();
+        amarillo6.displayWidth = Math.round(window.innerWidth / 3);
+        amarillo6.displayHeight = Math.round(window.innerHeight / 3);
+        amarillo6.setInteractive();
+        amarillo7.displayWidth = Math.round(window.innerWidth / 3);
+        amarillo7.displayHeight = Math.round(window.innerHeight / 3);
+        amarillo7.setInteractive();
+        amarillo8.displayWidth = Math.round(window.innerWidth / 3);
+        amarillo8.displayHeight = Math.round(window.innerHeight / 3);
+        amarillo8.setInteractive();
+        amarillo9.displayWidth = Math.round(window.innerWidth / 3);
+        amarillo9.displayHeight = Math.round(window.innerHeight / 3);
+        amarillo9.setInteractive();
+
+
+        amarillo.on("click",function(gameObject){
+          gameObject.setVisible(false);
+        });
+
       }
     }
   };
