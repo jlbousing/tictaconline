@@ -15,6 +15,7 @@ export class AppComponent {
    * Game instance.
    */
   public game: Phaser.Game;
+   playerOne: boolean;
 
   /**
    * Game configuration.
@@ -30,12 +31,14 @@ export class AppComponent {
         //this.load.setBaseURL('http://labs.phaser.io');
         this.load.image('background', 'assets/bluebackground.png');
         this.load.image("amarillo", "assets/amarillo.png");
+        this.load.image("circle", "assets/circle.png");
+        this.load.image("x", "assets/X.png");
         //this.load.image('logo', 'assets/sprites/phaser3-logo.png');
         //this.load.image('red', 'assets/particles/red.png');
       },
       create: function () {
         var backgroundSprite = this.add.image(680, 300, 'background');
-        var amarillo = this.add.image(228,105,"amarillo");
+        var amarillo = this.add.image(228,105,"amarillo").setInteractive();
         var amarillo2 = this.add.image(690,105,"amarillo");
         var amarillo3 = this.add.image(1150,105,"amarillo");
         var amarillo4 = this.add.image(228,320,"amarillo");
@@ -52,7 +55,7 @@ export class AppComponent {
 
         amarillo.displayWidth = Math.round(window.innerWidth / 3);
         amarillo.displayHeight = Math.round(window.innerHeight / 3);
-        amarillo.setInteractive();
+        
         amarillo2.displayWidth = Math.round(window.innerWidth / 3);
         amarillo2.displayHeight = Math.round(window.innerHeight / 3);
         amarillo2.setInteractive();
@@ -78,10 +81,19 @@ export class AppComponent {
         amarillo9.displayHeight = Math.round(window.innerHeight / 3);
         amarillo9.setInteractive();
 
-
-        amarillo.on("click",function(gameObject){
-          gameObject.setVisible(false);
+        amarillo.on("clicked",()=> {
+          console.log("funciona carajo");
+          this.add.image(amarillo.x,amarillo.y,"x");
         });
+        this.input.on("gameobjectdown",(pointer,gameObject)=> {
+          gameObject.emit("clicked");
+        });
+
+      },
+      update: function(){
+       
+          
+       
 
       }
     }
@@ -90,7 +102,9 @@ export class AppComponent {
   /**
    * Instantiate application component.
    */
-  public constructor() { }
+  public constructor() { 
+    
+  }
 
   /**
    * Game ready event handler.
@@ -99,6 +113,7 @@ export class AppComponent {
    */
   public onGameReady(game: Phaser.Game): void {
     console.log(game);
+    this.playerOne = true;
     this.game = game;
   }
 
