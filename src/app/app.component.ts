@@ -15,7 +15,7 @@ export class AppComponent {
    * Game instance.
    */
   public game: Phaser.Game;
-   playerOne: boolean;
+  public playerOne: boolean;
 
   /**
    * Game configuration.
@@ -48,7 +48,7 @@ export class AppComponent {
         var amarillo8 = this.add.image(690,535,"amarillo");
         var amarillo9 = this.add.image(1150,535,"amarillo");
 
-        console.log(amarillo2);
+      
         console.log(backgroundSprite);
         backgroundSprite.displayWidth = window.innerWidth;
         backgroundSprite.displayHeight = window.innerHeight;
@@ -82,18 +82,116 @@ export class AppComponent {
         amarillo9.setInteractive();
 
         amarillo.on("clicked",()=> {
-          console.log("funciona carajo");
-          this.add.image(amarillo.x,amarillo.y,"x");
+          if(AppComponent.prototype.playerOne){
+              this.add.image(amarillo.x,amarillo.y,"circle");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo.input.enabled = false;
+          }else{
+              this.add.image(amarillo.x,amarillo.y,"x");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo.input.enabled = false;
+          }
         });
+
+        amarillo2.on("clicked",()=> {
+          if(AppComponent.prototype.playerOne){
+              this.add.image(amarillo2.x,amarillo2.y,"circle");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo2.input.enabled = false;
+          }else{
+              this.add.image(amarillo2.x,amarillo2.y,"x");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo2.input.enabled = false;
+          }
+        });
+
+        amarillo3.on("clicked",()=> {
+          if(AppComponent.prototype.playerOne){
+              this.add.image(amarillo3.x,amarillo3.y,"circle");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo3.input.enabled = false;
+          }else{
+              this.add.image(amarillo3.x,amarillo.y,"x");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo3.input.enabled = false;
+          }
+        });
+
+        amarillo4.on("clicked",()=> {
+          if(AppComponent.prototype.playerOne){
+              this.add.image(amarillo4.x,amarillo4.y,"circle");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo4.input.enabled = false;
+          }else{
+              this.add.image(amarillo4.x,amarillo4.y,"x");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo4.input.enabled = false;
+          }
+        });
+
+        amarillo5.on("clicked",()=> {
+          if(AppComponent.prototype.playerOne){
+              this.add.image(amarillo5.x,amarillo5.y,"circle");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo5.input.enabled = false;
+          }else{
+              this.add.image(amarillo5.x,amarillo5.y,"x");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo5.input.enabled = false;
+          }
+        });
+
+        amarillo6.on("clicked",()=> {
+          if(AppComponent.prototype.playerOne){
+              this.add.image(amarillo6.x,amarillo6.y,"circle");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo6.input.enabled = false;
+          }else{
+              this.add.image(amarillo6.x,amarillo6.y,"x");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo6.input.enabled = false;
+          }
+        });
+
+        amarillo7.on("clicked",()=> {
+          if(AppComponent.prototype.playerOne){
+              this.add.image(amarillo7.x,amarillo7.y,"circle");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo7.input.enabled = false;
+          }else{
+              this.add.image(amarillo7.x,amarillo7.y,"x");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo7.input.enabled = false;
+          }
+        });
+
+        amarillo8.on("clicked",()=> {
+          if(AppComponent.prototype.playerOne){
+              this.add.image(amarillo8.x,amarillo8.y,"circle");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo8.input.enabled = false;
+          }else{
+              this.add.image(amarillo8.x,amarillo8.y,"x");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo8.input.enabled = false;
+          }
+        });
+
+        amarillo9.on("clicked",()=> {
+          if(AppComponent.prototype.playerOne){
+              this.add.image(amarillo9.x,amarillo9.y,"circle");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo9.input.enabled = false;
+          }else{
+              this.add.image(amarillo9.x,amarillo9.y,"x");
+              AppComponent.prototype.playerOne = !AppComponent.prototype.playerOne;
+              amarillo9.input.enabled = false;
+          }
+        });
+
         this.input.on("gameobjectdown",(pointer,gameObject)=> {
           gameObject.emit("clicked");
         });
-
-      },
-      update: function(){
-       
-          
-       
 
       }
     }
@@ -103,7 +201,7 @@ export class AppComponent {
    * Instantiate application component.
    */
   public constructor() { 
-    
+    //this.playerOne = true;
   }
 
   /**
@@ -112,8 +210,9 @@ export class AppComponent {
    * @param game Game instance.
    */
   public onGameReady(game: Phaser.Game): void {
-    console.log(game);
-    this.playerOne = true;
+    AppComponent.prototype.playerOne = true;
+    console.log("adasda");
+    console.log(AppComponent.prototype.playerOne);
     this.game = game;
   }
 
